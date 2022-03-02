@@ -4,14 +4,14 @@ node {
     checkout scm
 
     stage 'check env'
-    sh "mvnw -v"
+    sh "mvn -v"
     sh "java -version"
 
     stage 'test'
-    sh "mvnw test"
+    sh "mvn test"
 
     stage 'package'
-    sh "mvnw package"
+    sh "mvn package"
 
     stage 'report'
     step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
